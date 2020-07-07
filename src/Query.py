@@ -1,5 +1,6 @@
 import requests
 from lxml import etree
+import CharacterRomanizationList
 
 cookie = {
     "ipb_member_id": "1838963",
