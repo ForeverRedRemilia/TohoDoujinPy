@@ -2,8 +2,8 @@ import requests
 from lxml import etree
 
 cookie = {
-    #"ipb_member_id": "1838963",
-    #"ipb_pass_hash": "4620a8f43eedbf611ef866f0ced267d4"
+    "ipb_member_id": "1838963",
+    "ipb_pass_hash": "4620a8f43eedbf611ef866f0ced267d4"
     # "igneous": "af81e450f"
 }
 
