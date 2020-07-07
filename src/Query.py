@@ -1,24 +1,54 @@
 import requests
 from lxml import etree
+import random
+import time
+import xlwt
 import CharacterRomanizationList
+import CharacterSChineseDic
+import Config
 
-cookie = {
-    "ipb_member_id": "1838963",
-    "ipb_pass_hash": "4620a8f43eedbf611ef866f0ced267d4"
-    # "igneous": "af81e450f"
-}
+# 注入罗马音List
+rmList = CharacterRomanizationList.characterRomanizationList
+# 注入简体中文字典
+scDic = CharacterSChineseDic.characterSChineseDic
+# 注入浏览器请求头部
+headers = Config.headers
+# 注入代理（如不需要可以去掉）
+proxies = Config.proxies
+# 注入暂停时间（用于反反爬虫机制）
+lTime = Config.lTime
+rTime = Config.rTime
 
-proxy = '127.0.0.1:10809'  # 本地代理
-proxies = {
-    'http': 'http://' + proxy,
-    'https': 'https://' + proxy
-}
-html = requests.get(
-    "https://exhentai.org/?f_cats=767&f_search=parody%3Atouhou&advsearch=1&f_sname=on&f_stags=on&f_sh=on&f_spf=&f_spt=",
-    cookies=cookie, proxies=proxies)
-# print(html.text)
-etree_html = etree.HTML(html.text)
-content = etree_html.xpath('/html/body/div[2]/div[2]/p/text()')
-for each in content:
-    each = each.replace('Showing ', '').replace(',', '').replace('results', '')
-    print(each)
+# 创建excel表格
+wb = xlwt.Workbook()
+ws = wb.add_sheet('Query')
+ws.write(0, 0, 'Charactier')
+ws.write(0, 1, 'Num')
+
+i = 0
+length = len(rmList)
+while i < length:
+    curCharacter = rmList[i]
+    scCharacter = scDic[curCharacter]
+    url = "https://exhentai.org/?f_cats=761&f_search=parody%3Atouhou_project+character%3A" + curCharacter + "&advsearch=1&f_sname=on&f_stags=on&f_sh=on&f_spf=&f_spt="
+    # 更新请求头部中的Referer
+    headers['Referer'] = url
+    html = requests.get(url, headers=headers, proxies=proxies)
+    etree_html = etree.HTML(html.text)
+    content = etree_html.xpath('/html/body/div[2]/div[2]/p/text()')
+    for each in content:
+        each = each.replace('Showing ', '').replace(',', '').replace('results', '').replace(' ', '')\
+            .replace('result', '')
+        print(scCharacter + " : " + each)
+        if each is None or each == '':
+            print("连接丢失，即将重连...")
+            i -= 1
+        else:
+            ws.write(i + 1, 0, scCharacter)
+            ws.write(i + 1, 1, each)
+    # 随机暂停时间（秒）
+    suspendTime = random.randint(lTime, rTime)
+    print("随机暂停时间：%s秒，进度%s/%s" % (suspendTime, i + 1, length))
+    time.sleep(suspendTime)
+    i += 1
+wb.save('result.xls')
