@@ -12,7 +12,9 @@ proxies = {
     'http': 'http://' + proxy,
     'https': 'https://' + proxy
 }
-html = requests.get("https://exhentai.org/?f_cats=761&f_search=remilia", cookies=cookie, proxies=proxies)
+html = requests.get(
+    "https://exhentai.org/?f_cats=767&f_search=parody%3Atouhou&advsearch=1&f_sname=on&f_stags=on&f_sh=on&f_spf=&f_spt=",
+    cookies=cookie, proxies=proxies)
 # print(html.text)
 etree_html = etree.HTML(html.text)
 content = etree_html.xpath('/html/body/div[2]/div[2]/p/text()')
