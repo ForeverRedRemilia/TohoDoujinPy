@@ -1,5 +1,5 @@
 # TohoDoujinPy
-（成果展示：https://www.bilibili.com/video/bv1QV41167jp）
+# 成果展示：https://www.bilibili.com/video/bv1QV41167jp
 
 拉到Pycharm下即可，需要把pyvenv.cfg中的home改为你自己本机的python目录
 
