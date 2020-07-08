@@ -23,4 +23,4 @@ proxies = {
 # 左闭区间（单位秒)
 lTime = 3
 # 右闭区间（单位秒）
-rTime = 8
+rTime = 6

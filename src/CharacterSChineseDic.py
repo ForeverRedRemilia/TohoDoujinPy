@@ -68,7 +68,7 @@ characterSChineseDic = {
     'Wriggle_Nightbug': '莉格露·奈特巴格',
     'Mystia_Lorelei': '米斯蒂娅·萝蕾拉',
     'Keine_Kamishirasawa': '上白泽慧音',
-    'Tewi_Inaba': '因幡天为（因幡帝）',
+    'Tewi_Inaba': '因幡帝',
     'Reisen_Udongein_Inaba': '铃仙·优昙华院·因幡',
     'Eirin_Yagokoro': '八意永琳',
     'Kaguya_Houraisan': '蓬莱山辉夜',
