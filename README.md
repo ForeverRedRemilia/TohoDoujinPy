@@ -1,1 +1,7 @@
 # TohoDoujinPy
+拉到Pycharm下即可，需要把pyvenv.cfg中的home改为你自己本机的python目录
+
+在Config.py中有浏览器请求头信息的说明，需要先登录表站
+Cookie是必备的！！其他头部信息越完整被反爬的概率就越小，如果请求头只有Cookie的话爬两下你的IP就会面临1~24小时的封锁
+
+会在将来的版本中加入网络异常处理的机制
