@@ -1,5 +1,6 @@
 # TohoDoujinPy
 # 成果展示：https://www.bilibili.com/video/bv1QV41167jp
+该项目为数据后端（爬虫端），数据前端我使用的是Jannchie的开源可视化项目，在github上也能找到
 
 拉到Pycharm下即可，需要把pyvenv.cfg中的home改为你自己本机的python目录
 
