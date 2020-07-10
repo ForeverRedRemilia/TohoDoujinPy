@@ -73,21 +73,21 @@ cul = 0
 # 初始化增加的天数
 day = 0
 # 排名
-rank = 0
+rank = len(vlCount) + 1
 for key, value in dictList:
     j += 1
     curVl = vlDic[str(value)]
     if curVl == 'false':
         # 记录最早出现该值的排名
         vlDic[str(value)] = 'true'
-        rank = len(characterNumDict) - j + 1 - vlCount[str(value)]
+        rank -= 1
         day += 1
     # 天数
     x = 0
     while cul < j * 20:
         cul += 1
         ws.write(cul, 0, scDic[key])
-        ws.write(cul, 1, rank + 1)
+        ws.write(cul, 1, rank)
         ws.write(cul, 2, value)
         nowTime = (datetime.datetime.now() + datetime.timedelta(days=x + day)).strftime("%Y-%m-%d")
         ws.write(cul, 3, nowTime)
