@@ -31,7 +31,7 @@ vlCount = {}
 while i < length:
     curCharacter = rmList[i]
     scCharacter = scDic[curCharacter]
-    # 使用https://exhentai.org访问，选好要查询的条件，点击查询，copy地址栏中的url，根据需求更改url，推荐选择Doujinshi、Manga、Non-H三个标签
+    # 选好要查询的条件，点击查询，copy地址栏中的url，根据需求更改url，推荐选择Doujinshi、Manga、Non-H三个标签
     url = "https://exhentai.org/?f_cats=761&f_search=parody%3Atouhou_project+character%3A" + curCharacter + "&advsearch=1&f_sname=on&f_stags=on&f_sh=on&f_spf=&f_spt="
     # 更新请求头部中的Referer
     headers['Referer'] = url
